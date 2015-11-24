@@ -44,7 +44,22 @@ Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
 ##PGP
 
-Euuuuuh...
+[...]
 
 ##SKIP (Simple Key-Management for Internet Protocol)
 
+[...]
+
+##Certification, Risks and Privacy Rights
+
+This section arguments about security policy implementation : where the frontier need to be, is there any limit to privacy for user against governement surveillance?
+Is the end of the end of the inernet as we know it today (in 1998, thus)? Do the governements need to be involved in the Internet regulation?
+What is the actual involvement of governement in that [Koop98].
+
+##Conclusions
+
+Both of those methods of certification need a centralized certification control system to be useful in commercial situations.
+That may be the point of this article, this paradigm is controversial with the Internet paradigm, where everything is decentralized.
+Certificates are not unbrakable, so users need to be careful.
+Govenements need to adapt to the technology; technology brings up new problems, so governements need to find new solutions to solve those. 
+MCG is currently (in 1998) on a global standardisation designed to enhance security and performance.
