@@ -63,3 +63,16 @@ That may be the point of this article, this paradigm is controversial with the I
 Certificates are not unbrakable, so users need to be careful.
 Govenements need to adapt to the technology; technology brings up new problems, so governements need to find new solutions to solve those. 
 MCG is currently (in 1998) on a global standardisation designed to enhance security and performance.
+
+##Back to the future
+
+This article was write in 1998, so there was some improvement in the domain. The author was part of a workgroup called MCG (for Meta-Certificate Group), which was closed in 2000. Their goal was to create a worldwide certification system, so we are now going to look what is up to date (thus in 2015).
+
+###DANE
+
+DANE, for **DNS-based Authentication of Named Entities**, [...]
+
+##Links to follow
+
+* Google certificate transparency : http://www.certificate-transparency.org/what-is-ct
+* DANE : [Wikipedia](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities), a Internet Society [article](http://www.internetsociety.org/articles/dane-taking-tls-authentication-next-level-using-dnssec)
