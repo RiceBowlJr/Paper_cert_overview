@@ -44,7 +44,12 @@ Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
 ##PGP
 
-[...]
+PGP (**Pretty Good Privacy**), globaly created by *put his name*. [Schema]
+It is based on the *web-of-trust*, if the client doesn't know a CA which gave him a certificate, he ask to the PGP ring.
+In that ring, even if the client doesn't know everyone, someone will know him, thus the web-of-trust principle.
+Each member of the ring have a trust evaluation of CAs. If the client knows someone he trust that trust the CA he doesn't know, then he accept the certificate and trust the CA.
+But if the client trust someone who doesn't trust the CA, he reject the CA.
+The big point is when nobody knows the CA, and when trusted friends of the client have a medium evaluation of the CA : when to trust, when to reject, at which level of trust?
 
 ##SKIP (Simple Key-Management for Internet Protocol)
 
