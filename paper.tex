@@ -146,7 +146,7 @@
 
 % Write abstract here
 \begin{abstract}
-	
+This paper is inspired from E.Gerck "Overview of Certification systems: X.509, CA, PGP and SKIP" \cite{gerck1998overview}
 \end{abstract}
 
 % Each section begins with a \section{title} command
@@ -177,15 +177,26 @@ Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
 \subsection{PGP}
 
-PGP \footnote{Pretty Good Privacy}, globaly created by *put his name*.
+PGP \footnote{Pretty Good Privacy}, created thanks to Phil Zimmermann researches.
 
 %&\include
 [Schema]
-It is based on the *web-of-trust*, if the client doesn't know a CA which gave him a certificate, he ask to the PGP ring.
+It is based on the \textit{web-of-trust}, if the client doesn't know a CA which gave him a certificate, he ask to the PGP ring.
 In that ring, even if the client doesn't know everyone, someone will know him, thus the web-of-trust principle.
 Each member of the ring have a trust evaluation of CAs. If the client knows someone he trust that trust the CA he doesn't know, then he accept the certificate and trust the CA.
 But if the client trust someone who doesn't trust the CA, he reject the CA.
 The big point is when nobody knows the CA, and when trusted friends of the client have a medium evaluation of the CA : when to trust, when to reject, at which level of trust?
+
+\nocite{*}
+
+\begin{thebibliography}{99}
+
+\bibitem{gerck1998overview} E.Gerck, Overview of Certification Systems: X. 509, CA, PGP and SKIP, 1998, http://www.blackhat.com/presentations/bh-usa-99/EdGerck/certover.pdf
+
+\bibitem{skip2010user} Oracle, SunScreen SKIP User's Guide, Release 1.1, 2010, http://docs.oracle.com/cd/E19957-01/805-5743/6j5dvnrfs/index.html
+
+
+\end{thebibliography}
 
 % Your document ends here!
 \end{document}
