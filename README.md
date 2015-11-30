@@ -81,3 +81,4 @@ DANE, for **DNS-based Authentication of Named Entities**, [...]
 
 * Google certificate transparency : http://www.certificate-transparency.org/what-is-ct
 * DANE : [Wikipedia](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities), a Internet Society [article](http://www.internetsociety.org/articles/dane-taking-tls-authentication-next-level-using-dnssec) 
+ 
