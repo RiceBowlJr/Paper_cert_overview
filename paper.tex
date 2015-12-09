@@ -146,7 +146,7 @@
 
 % Write abstract here
 \begin{abstract}
-This paper is inspired from E.Gerck "Overview of Certification systems: X.509, CA, PGP and SKIP" \cite{gerck1998overview}. It gives an overview of (main of) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google. Then it gives a reflection on pros and cons of each system, on a technical point of view and about the government stranglehold on data exchanges.
+This paper is a synthesis of a E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. It first gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with a reflection on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
 \end{abstract}
 
 % Each section begins with a \section{title} command
@@ -158,17 +158,22 @@ This paper is inspired from E.Gerck "Overview of Certification systems: X.509, C
 
 \subsection{X.509 and CAs}
 
-Description of the different entities
+X.509 and CAs\cite{rfc3647} infrastructure is based on a directory method.
+With this kind of certification system, there are three different entities, which are :
 
-1. CA : can be public (like banks with clients), commercial (like Verisign) or private (like internal departement of a compagny, to log user)
-2. Subscriber : sends some infos to the CA to add it to his certificate
-3. User : ask infos to CA(s), it's central to the process, since the user party is relying on the informations and is thus at risk
+\begin{enumerate}
+	\item \textbf{CA : Certification Authority}, an entity at controls the authentication services and the management of certificates. It can be public (like banks with their clients), commercial (like Verisign which sells its services) or private (like a compagny department, for an internal purpose).
+	\item \textbf{Subscriber :} the entity which sends informations to the CA to add it to his certificate. The entity is one that need to be trusted by the next entity (\textit{user}).
+	\item \textbf{User :} ask infos to CA(s), it's central to the process, since the user party is relying on the informations and is thus at risk.
+\end{enumerate}
 
-Concerns about the authentification services provided by CAs
+The main concerns about authentification services provided by CAs are :
 
-1. The content of a certificate needs to be discussed, as well as certificate revocation
-2. Issues about DN (Distinguished Name) and CA : a user can possess one or more DN, and use one or more DN on one or more DN
-3. Validation of the user, using an ID, which is easily subject to fraud
+\begin{itemize}
+	\item The content of a certificate needs to be discussed, as well as certificate revocation
+	\item Issues about DN (Distinguished Name) and CA : a user can possess one or more DN, and use one or more DN on one or more DN
+	\item Validation of the user, using an ID, which is easily subject to fraud
+\end{itemize}
 
 Going deeper with user validation : DN scheme based on X.500 Recomendation, but it is not completly defined, and will (in 1998) probably not be. Also, X509 certification depends on many others such as ISO, ANSI, ITU and IETF. Thus lead to a lack of harmonization.
 Plus, there is a big problem with CPS (Certification Practice Statements), that also can be seen such as flexibility (for pros), because each CA answer specific needs, so no harmonization again.
@@ -177,7 +182,7 @@ Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
 \subsection{PGP}
 
-PGP \footnote{Pretty Good Privacy}, created thanks to Phil Zimmermann researches.
+PGP\footnote{Pretty Good Privacy}, created thanks to Phil Zimmermann researches.
 
 [TODO : Schema]
 
@@ -189,7 +194,7 @@ The big point is when nobody knows the CA, and when trusted friends of the clien
 
 \subsection{DANE}
 
-DANE\footnote{DNS-Based Authentication of Named Entities} is not implemented yet, but the IETF is working on the standard.
+DANE\footnote{DNS-Based Authentication of Named Entities} is not implemented yet, but a IETF team is working on the standard.
 
 \subsection{Cetificate Transparency}
 
@@ -199,11 +204,15 @@ Because of a case of Google CA's usurpation, Google is working on a new system t
 
 \begin{thebibliography}{99}
 
-\bibitem{gerck1998overview} E.Gerck, Overview of Certification Systems: X. 509, CA, PGP and SKIP, 1998, http://www.blackhat.com/presentations/bh-usa-99/EdGerck/certover.pdf
+\bibitem{gerck1998overview} E.Gerck, Overview of Certification Systems: X. 509, CA, PGP and SKIP, 1998. http://www.blackhat.com/presentations/bh-usa-99/EdGerck/certover.pdf
 
-\bibitem{skip2010user} Oracle, SunScreen SKIP User's Guide, Release 1.1, 2010, http://docs.oracle.com/cd/E19957-01/805-5743/6j5dvnrfs/index.html
+\bibitem{skip2010user} Oracle, SunScreen SKIP User's Guide, Release 1.1, 2010. http://docs.oracle.com/cd/E19957-01/805-5743/6j5dvnrfs/index.html
 
-\bibitem{dane2012} P Hoffman, J Schlyter, The DNS-based authentication of named entities (DANE) transport layer security (TLS) protocol: TLSA, 2012, https://www.rfc-editor.org/rfc/pdfrfc/rfc6698.txt.pdf
+\bibitem{dane2012} P Hoffman, J Schlyter, The DNS-based authentication of named entities (DANE) transport layer security (TLS) protocol: TLSA, 2012. https://www.rfc-editor.org/rfc/pdfrfc/rfc6698.txt.pdf
+
+\bibitem{certtransp2013} Laurie, B., Langley, A., \& Kasper, E. (2013). Certificate transparency (No. RFC 6962). https://www.rfc-editor.org/rfc/pdfrfc/rfc6962.txt.pdf
+
+\bibitem{rfc3647} Solo, D., Housley, R., \& Ford, W. (1999). Internet X. 509 public key infrastructure certificate and CRL profile. http://tools.ietf.org/html/rfc2459
 
 \end{thebibliography}
 
