@@ -138,7 +138,7 @@
 \begin{document}
 
 % Define document title and author
-	\title{Trustability of certificates}
+	\title{Trustability of certification systems}
 	\author{Alexandre Kervadec
 	\thanks{Tutor : A.Guermouche}}
 	\markboth{University of Bordeaux - Master 2 Computing Sciences}{}
@@ -146,11 +146,11 @@
 
 % Write abstract here
 \begin{abstract}
-This paper is inspired from E.Gerck "Overview of Certification systems: X.509, CA, PGP and SKIP" \cite{gerck1998overview}
+This paper is inspired from E.Gerck "Overview of Certification systems: X.509, CA, PGP and SKIP" \cite{gerck1998overview}. It gives an overview of (main of) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google. Then it gives a reflection on pros and cons of each system, on a technical point of view and about the government stranglehold on data exchanges.
 \end{abstract}
 
 % Each section begins with a \section{title} command
-\section{SKIP, X.509, CAs and PGP}
+\section{Overview of certification systems}
 
 \subsection{SKIP (Simple Key-Management for Internet Protocol)}
 
@@ -179,13 +179,21 @@ Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
 PGP \footnote{Pretty Good Privacy}, created thanks to Phil Zimmermann researches.
 
-%&\include
-[Schema]
+[TODO : Schema]
+
 It is based on the \textit{web-of-trust}, if the client doesn't know a CA which gave him a certificate, he ask to the PGP ring.
 In that ring, even if the client doesn't know everyone, someone will know him, thus the web-of-trust principle.
 Each member of the ring have a trust evaluation of CAs. If the client knows someone he trust that trust the CA he doesn't know, then he accept the certificate and trust the CA.
 But if the client trust someone who doesn't trust the CA, he reject the CA.
 The big point is when nobody knows the CA, and when trusted friends of the client have a medium evaluation of the CA : when to trust, when to reject, at which level of trust?
+
+\subsection{DANE}
+
+DANE\footnote{DNS-Based Authentication of Named Entities} is not implemented yet, but the IETF is working on the standard.
+
+\subsection{Cetificate Transparency}
+
+Because of a case of Google CA's usurpation, Google is working on a new system that can improve certification systems.
 
 \nocite{*}
 
@@ -195,6 +203,7 @@ The big point is when nobody knows the CA, and when trusted friends of the clien
 
 \bibitem{skip2010user} Oracle, SunScreen SKIP User's Guide, Release 1.1, 2010, http://docs.oracle.com/cd/E19957-01/805-5743/6j5dvnrfs/index.html
 
+\bibitem{dane2012} P Hoffman, J Schlyter, The DNS-based authentication of named entities (DANE) transport layer security (TLS) protocol: TLSA, 2012, https://www.rfc-editor.org/rfc/pdfrfc/rfc6698.txt.pdf
 
 \end{thebibliography}
 
