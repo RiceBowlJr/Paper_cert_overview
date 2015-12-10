@@ -146,17 +146,17 @@
 
 % Write abstract here
 \begin{abstract}
-This paper is a synthesis of a E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. It first gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with a reflection on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
+This paper is a synthesis of a E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. It first gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with thoughts on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
 \end{abstract}
 
 % Each section begins with a \section{title} command
 \section{Overview of certification systems}
 
-\subsection{SKIP (Simple Key-Management for Internet Protocol)}
+First sections talk about existing (sections \ref{x509} and \ref{pgp}) or extinguished (section \ref{skip}) certification systems. Then, further sections (\ref{dane} and \ref{certtrans}) deals with new, not implemented yet, technologies of certification that may answer to current issues. 
 
-[...]
 
 \subsection{X.509 and CAs}
+\label{x509}
 
 X.509 and CAs\cite{rfc3647} infrastructure is based on a directory method.
 With this kind of certification system, there are three different entities, which are :
@@ -180,9 +180,10 @@ Plus, there is a big problem with CPS (Certification Practice Statements), that 
 
 Some kind of conclusion about harmonization (lack of), in a world wide vision.
 
-\subsection{PGP}
+\subsection{PGP (Pretty Good Privacy)}
+\label{pgp}
 
-PGP\footnote{Pretty Good Privacy}, created thanks to Phil Zimmermann researches.
+PGP, created thanks to Phil Zimmermann researches.
 
 [TODO : Schema]
 
@@ -192,11 +193,19 @@ Each member of the ring have a trust evaluation of CAs. If the client knows some
 But if the client trust someone who doesn't trust the CA, he reject the CA.
 The big point is when nobody knows the CA, and when trusted friends of the client have a medium evaluation of the CA : when to trust, when to reject, at which level of trust?
 
-\subsection{DANE}
 
-DANE\footnote{DNS-Based Authentication of Named Entities} is not implemented yet, but a IETF team is working on the standard.
+\subsection{SKIP (Simple Key-Management for Internet Protocol)}
+\label{skip}
+
+
+
+\subsection{DANE (DNS-Based Authentication of Named Entities)}
+\label{dane}
+
+DANE is not implemented yet, but a IETF team is working on the standard.
 
 \subsection{Cetificate Transparency}
+\label{certtrans}
 
 Because of a case of Google CA's usurpation, Google is working on a new system that can improve certification systems.
 
@@ -205,6 +214,8 @@ Because of a case of Google CA's usurpation, Google is working on a new system t
 \begin{thebibliography}{99}
 
 \bibitem{gerck1998overview} E.Gerck, Overview of Certification Systems: X. 509, CA, PGP and SKIP, 1998. http://www.blackhat.com/presentations/bh-usa-99/EdGerck/certover.pdf
+
+\bibitem{skip1995} Ashar Aziz, Tom Markson, Hemma Prafullchandra, Sun Microsystems, Inc., v.06, 1995. https://tools.ietf.org/html/draft-ietf-ipsec-skip-06
 
 \bibitem{skip2010user} Oracle, SunScreen SKIP User's Guide, Release 1.1, 2010. http://docs.oracle.com/cd/E19957-01/805-5743/6j5dvnrfs/index.html
 

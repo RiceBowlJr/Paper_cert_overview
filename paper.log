@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.17)  9 DEC 2015 18:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.11.17)  10 DEC 2015 15:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -336,18 +336,18 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Underfull \hbox (badness 2096) in paragraph at lines 207--208
+Underfull \hbox (badness 2096) in paragraph at lines 216--217
 []\OT1/ptm/m/n/8 E.Gerck, Overview of Cer-ti-fi-ca-tion Sys-tems: X. 509, CA, P
 GP
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
 \OT1/ptm/m/n/8 and SKIP, 1998. http://www.blackhat.com/presentations/bh-usa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
 []\OT1/ptm/m/n/8 Oracle, Sun-Screen SKIP User's Guide, Re-lease 1.1, 2010.
  []
 
@@ -356,20 +356,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
 ] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 5204 strings out of 493050
- 76886 string characters out of 6136824
- 163655 words of memory out of 5000000
- 8660 multiletter control sequences out of 15000+600000
- 39504 words of font info for 76 fonts, out of 8000000 for 9000
+ 5193 strings out of 493050
+ 76768 string characters out of 6136824
+ 163732 words of memory out of 5000000
+ 8657 multiletter control sequences out of 15000+600000
+ 35646 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,32p,477b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,5n,32p,473b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on paper.pdf (1 page, 69704 bytes).
+Output written on paper.pdf (1 page, 70031 bytes).
 PDF statistics:
  29 PDF objects out of 1000 (max. 8388607)
  20 compressed objects within 1 object stream
