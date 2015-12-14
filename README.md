@@ -83,3 +83,4 @@ DANE, for **DNS-based Authentication of Named Entities**, [...]
 * DANE : [Wikipedia](https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities), a Internet Society [article](http://www.internetsociety.org/articles/dane-taking-tls-authentication-next-level-using-dnssec) 
  
  
+ 
