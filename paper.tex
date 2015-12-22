@@ -138,10 +138,12 @@ The problem is that SKIP happens at a low level, so it is transparent to the use
 So that protocol imediatly looks unapropriate for our study. In other way, SKIP does not exist anymore, so it is pointless to go further in it study.
 
 
-\subsection{Thoughts about X.509 and PGP}
+\subsection{Thoughts about X.509, CAs and PGP}
 \label{thoughts_old}
 
-
+To be used in a commercial way (for responsabilities purpose), X.509, CAs and PGP need a centralized certification control system. However, there is a struggle between this need of centralization and the internet architecture (that is decentralized). This show us the uselessness of centralized governement controls, since we have no central government on the internet which give a world governance.\\
+So the question emerging in there is: how can we (and do we need to) have a main control on an internet environement, to assure the goodness of datas and legitimacy of interlocutors?\\
+Some answers have been made since then (thus since the publication of the original article), answers that we are going to explain further.
 
 
 \subsection{DANE (DNS-Based Authentication of Named Entities)}
@@ -152,7 +154,16 @@ DANE is not implemented yet, but a IETF team is working on the standard.
 \subsection{CATA: Certificate Authority Transparency and Auditability}
 \label{certtrans}
 
-Because of a case of Google CA's usurpation, Google is working on a new system that can improve certification systems.
+This protocol has been developped by a Google team few years ago \cite{LL11}. It is still in developpment \cite{certtransp2013} so it is not implemented and deployed yet. It also has to be improve, like everythign in computing sciences, in the early years.\\
+CATA's purpose is a public list of all certificates that are emitted by CAs. Thus, clients are allowed to search in that public list, and verify that the received certificate is in that list, to be validate (if it is not in the list, it shall be rejected).\\
+In that way, a(conscientious) domain administrator can have access to that list and monitor all fraudulent certificates for his domain.\\
+For the moment, there are plenty of questions to answer like :
+\begin{itemize}
+	\item Who should hold those lists?
+	\item How many lists should be created?
+	\item How does the revokation should work?
+	\item What should happen if a certificate is no longer available (path unreachable)?
+\end{itemize}
 
 \nocite{*}
 
@@ -167,6 +178,9 @@ Because of a case of Google CA's usurpation, Google is working on a new system t
 \bibitem{caronni2000} Caronni, G. (2000). Walking the web of trust. In Enabling Technologies: Infrastructure for Collaborative Enterprises, 2000.(WET ICE 2000). Proeedings. IEEE 9th International Workshops on (pp. 153-158). IEEE. %http://system.khl.mydns.jp/college/WOT/The_PGP_Trust_Model.pdf
 
 \bibitem{dane2012} P Hoffman, J Schlyter, The DNS-based authentication of named entities (DANE) transport layer security (TLS) protocol: TLSA, 2012. https://www.rfc-editor.org/rfc/pdfrfc/rfc6698.txt.pdf
+
+\bibitem{LL11} Ben Laurie and Adam Langley. Certificate authority transparency and auditability. http://www.links.
+org/files/CertificateAuthorityTransparencyandAuditability.pdf, 2011.
 
 \bibitem{certtransp2013} Laurie, B., Langley, A., \& Kasper, E. (2013). Certificate transparency (No. RFC 6962). %https://www.rfc-editor.org/rfc/pdfrfc/rfc6962.txt.pdf
 
