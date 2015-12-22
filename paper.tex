@@ -127,11 +127,20 @@ For an introducer, those levels of trustworthiness are the following:
 
 Only the trustworthiness of public-key's validity is automatically evaluated by PGP. Introducer's worthiness is manually assigned by each user of to the public key, and exists only within each individual user's public-key ring\footnote{PGP allows users to have files representing multipke \textit{key rings} to store public or secret keys\cite{caronni2000}.}.
 
-The big point is the use of such a tool in a world wide range: that is raisonnably not possible. We can assume to use it in a little group, where trustworthiness is effective, but in a more wide area, it is problematic to trust such a amount of people, or find trusted introducers.
+The big point is the use of such a tool in a world wide range: that is raisonnably not possible. We can assume to use it in a little group, where trustworthiness is effective, but in a more wide area, it is problematic to trust such a amount of people, or find trusted introducers. Furthermore, in a commercial use, there is no entity responsible when something goes wrong.
 
 
 \subsection{SKIP (Simple Key-Management for Internet Protocol)}
 \label{skip}
+
+SKIP implements a linked-chain of two-sided node authenticators, where each node derives its informations from a sort of \textit{directory service}.\\
+The problem is that SKIP happens at a low level, so it is transparent to the user; also assuming that the user has no control over security or other certification choices. So it has to be complemented by a second higher level protocol. Furthermore, SKIP does not support IP translation (such as NAT behind a firewall), that makes it quite useless.\\
+So that protocol imediatly looks unapropriate for our study. In other way, SKIP does not exist anymore, so it is pointless to go further in it study.
+
+
+\subsection{Thoughts about X.509 and PGP}
+\label{thoughts_old}
+
 
 
 
