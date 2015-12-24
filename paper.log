@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.4)  22 DEC 2015 19:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.4)  24 DEC 2015 17:03
 entering extended mode
 **paper.tex
 (paper.tex
@@ -595,39 +595,68 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 154.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2]
+)
+Underfull \hbox (badness 1360) in paragraph at lines 152--155
+\OT1/ptm/m/n/10 Thereby, []\OT1/pcr/m/n/10 www.example.org \OT1/ptm/m/n/10 woul
+d be able to se-cure
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--155
+
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 156--159
+\OT1/ptm/m/n/10 From the clas-sic schem, we have \OT1/ptm/m/it/10 Al-ice\OT1/pt
+m/m/n/10 , the sub-scriber
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
+
+ []
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
-Underfull \hbox (badness 6825) in paragraph at lines 182--183
+Underfull \hbox (badness 6825) in paragraph at lines 221--222
 []\OT1/ptm/m/n/8 St[]ephane Bortzmeyer. Com-ment fonc-tionne la faille kamin-sk
 y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 \OT1/ptm/m/n/8 ? http://www.bortzmeyer.org/comment-fonctionne-la-faille-
  []
 
-[3
 
-] (paper.aux) ) 
+Underfull \hbox (badness 4660) in paragraph at lines 235--236
+[]\OT1/ptm/m/n/8 Dancho Danchev. Hack-ers hi-jack dns records of high pro-file
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
+[]\OT1/ptm/m/n/8 Utkarsh. Do-main-ing.com hacked. http://dotsutra.com/domain-
+ []
+
+[3] (paper.aux) ) 
 Here is how much of TeX's memory you used:
- 15616 strings out of 493636
- 291364 string characters out of 3143744
- 342299 words of memory out of 3000000
- 18742 multiletter control sequences out of 15000+200000
- 41155 words of font info for 79 fonts, out of 3000000 for 9000
+ 15620 strings out of 493636
+ 291397 string characters out of 3143744
+ 342309 words of memory out of 3000000
+ 18745 multiletter control sequences out of 15000+200000
+ 41670 words of font info for 81 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 55i,8n,60p,576b,769s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/u
-tmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 105246 bytes).
+ 55i,8n,60p,604b,769s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times
+/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (3 pages, 113913 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

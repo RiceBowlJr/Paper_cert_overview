@@ -16,7 +16,7 @@
 \begin{document}
 
 % Define document title and author
-	\title{Trustability of certification systems}
+	\title{From a centralized certification systems to a more internet-like one}
 	\author{Alexandre Kervadec
 	\thanks{Tutor : A.Guermouche}}
 	\markboth{University of Bordeaux -- Master 2 Computing Sciences - Networking and mobile systems}{}
@@ -151,7 +151,46 @@ Some answers have been made since then (thus since the publication of the origin
 
 DANE is not implemented yet, but a IETF team is working on the standard.\\
 It has begin with a simple assert: why use a new trust infrastructure if we already have to use DNS to resolve a domain name?\\
-From here, DNS must be securised, knowing that it is easily to set a MITM with DNS cache poisoning \cite{bor08} \cite{aa04}. That is the main purpose of DNSSEC: secure DNS. DANE allow to store keys in DNS. Thereby, \verb$www.example.org$ would be able to secure \verb$https://www.example.org$ without using a suspicious third part, just by putting its keys in the domain name that it controls. By its arborescent nature, \verb$example.org$ shall not be able to cheat on \verb$example.com$.
+From here, DNS must be securised, knowing that it is easily to set a MITM with DNS cache poisoning \cite{aa04} using the Kaminsky attack \cite{bor08}. That is the main purpose of DNSSEC: secure DNS. DANE allow to store keys in DNS. Thereby, \verb$www.example.org$ would be able to secure \verb$https://www.example.org$ without using a suspicious third part, just by putting its keys in the domain name that it controls. By its arborescent nature, \verb$example.org$ shall not be able to cheat on \verb$example.com$.\\
+
+Lets give us an example:\\
+From the classic schem, we have \textit{Alice}, the subscriber (\verb$alice.example.com$), \textit{Bob} its client, and \textit{Charlie}, the serious AC. There are three different scenarios:
+\begin{itemize}
+	\item \textit{Type 0:} Alice has got a certificate delivered by Charlie and is really satisfied by it. But Alice is afraid that \textit{Oscar} (a bad AC) forge a false certificate for its website. So Alice uses DANE to tell in DNS that Charlie and only Charlie is its AC.
+	\item \textit{Type 1:} Alice has got a certificate delivered by Charlie, but fear that Charlie give its certificate to bad people. So Alice uses DANE to publish in DNS the origin of its certificate.
+	\item \textit{Type 2:} that is the \textit{max scenario} in DANE. Alice doesn't trust ACs anymore, so it decides to emite it via DANE on DNS, that gives the entire responsability on DNS servers. 
+\end{itemize}
+
+This type is in a new register called TLSA\footnote{TLSA doesn't stand for anything: it is just the name of the RRtype (Record Resource type).} in DNS. Her is an example of a TLSA register:\\
+\begin{Verbatim}[fontsize=\small]
+_443._tcp.www.example.com. IN TLSA (
+	0 0 1 d2abde240d7cd3ee6b4b28c54df0&34b9
+	7983a1d16e8a410e4561cb106618e971 )
+\end{Verbatim}
+With:
+\begin{itemize}
+	\item \verb$443$ : the port used.
+	\item \verb$tcp$ : the protocole used.
+	\item \verb$www.example.com$ the domain name.
+	\item \verb$0 x x$ : the type used, here it is a type 0 (\verb$1 x x$ for type 1 and \verb$2 x x$ for type 2).
+	\item The rest is the certificate itself.
+\end{itemize}
+
+As we said before, DNS is not secured, so DNSEC has been deployed. DNSSEC is a protocol that allow to the DNS server (master) ti encrypt and sign its answer with a public key cryptographic system. It also permit to return a \verb$NXDOMAIN$ type (''No Such Domain'').\\
+Nervertheless DNSSEC has some vulnaribilities such as:
+\begin{itemize}
+	\item Replay attacks
+	\item Attacks against intermediaries: because of the hierarchic and centralized approch of DNS (there is only one root), the responsability of intermediaries is really high and a remote control by a thief should be bad (the thief controls the domain thus). History has proved that some of those intermediaries are not that trustworthy \cite{dan08} \cite{utk11}.
+\end{itemize}
+
+To make a conclusion about DANE, we have multiple points to point out:
+\begin{itemize}
+	\item Introducing a new register TLSA shall be very complicated, knowing that things are not moving that fast in DNS\footnote{Like it use to be with EDNS introduction few years ago.}.
+	\item The validation necessity end to end is quite disturbing knowing that there is no standart and deployable solution for wide use  about the last kilometer securisation.
+	\item DNSSEC is not possible behind a DNS proxy (which filter/break DNS answers to the point of creating a DoS for all TLS services.
+\end{itemize}
+
+Therefor, DANE is on a good way, particulary for communications between servers, where there is no (not much) constraints of security are (more) easily achievable. 
 
 \subsection{CATA: Certificate Authority Transparency and Auditability}
 \label{certtrans}
@@ -192,6 +231,10 @@ org/files/CertificateAuthorityTransparencyandAuditability.pdf, 2011.
 \bibitem{certtransp2013} Laurie, B., Langley, A., \& Kasper, E. (2013). Certificate transparency (No. RFC 6962). %https://www.rfc-editor.org/rfc/pdfrfc/rfc6962.txt.pdf
 
 \bibitem{rfc3647} Solo, D., Housley, R., \& Ford, W. (1999). Internet X. 509 public key infrastructure certificate and CRL profile. %http://tools.ietf.org/html/rfc2459
+
+\bibitem{dan08} Dancho Danchev. Hackers hijack dns records of high profile new zealand sites. http://m.zdnet.com/blog/security/hackers-hijack-dns-records-of-high-profile-new-zealand-sites/3185, 2008.
+
+\bibitem{utk11} Utkarsh. Domaining.com hacked. http://dotsutra.com/domain-names/industry-news/domaining-com-hacked/, 2011.
 
 \end{thebibliography}
 
