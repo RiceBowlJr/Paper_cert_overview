@@ -53,6 +53,14 @@ The way that certification system is the following:
 	\item The CA answer to the user to give him the precious informations about the subscriber's identity.
 \end{itemize}
 
+\begin{figure}[!hbt]
+	\begin{center}
+	\includegraphics[width=\columnwidth]{pki.png}
+	\label{fig:pki}
+	\caption{Diagram of the X.509 and CAs process (from \cite{wang2015domain})}
+	\end{center}
+\end{figure}
+
 There is a not outwardly perceived entity in this system, it is the Naming Authority (DN). It provides to the CA a unique distinguished name (DN) which matches to the subscriber identity in the certificate.\\
 Note that the CA can double in NA, but they provide two different services: the CA certificate refers to a name but does not denote it, the NA does.\\
 
@@ -176,6 +184,14 @@ With:
 	\item The rest is the certificate itself.
 \end{itemize}
 
+\begin{figure}[!hbt]
+	\begin{center}
+	\includegraphics[width=\columnwidth]{danereq.png}
+	\label{fig:pki}
+	\caption{Process of certificate verification (from \cite{wang2015domain})}
+	\end{center}
+\end{figure}
+
 As we said before, DNS is not secured, so DNSEC has been deployed. DNSSEC is a protocol that allow to the DNS server (master) ti encrypt and sign its answer with a public key cryptographic system. It also permit to return a \verb$NXDOMAIN$ type (''No Such Domain'').\\
 Nervertheless DNSSEC has some vulnaribilities such as:
 \begin{itemize}
@@ -195,7 +211,12 @@ Therefor, DANE is on a good way, particulary for communications between servers,
 \subsection{Sovereign keys}
 \label{sovkeys}
 
+Sovereign keys are an Electric Frontier Foundation (EFF) proposition.
 
+A sovereign key is a cryptographic pair of key where the public key is associated to a domain name (or a subdomain) to create a trust anchor\footnote{A trust anchor is an authoritative entity for which trust is assumed and not derived \cite{wallace2010}.} for itself.\\
+This association \textit{public key/domain name} is registered in a append-only data structure, kept on servers named ''\textit{timeline servers}''. There is a small number, around 10-20, of these \cite{eck2014}.\\
+The private part of the sovereign key (private key) allows to sign certificates of which the CN is the domain (or subdomain) name which it is associate with.\\
+During a handshake with a TLS server, the certificate is sent with its protected domain key signature, by the same mecanism than a TLS transaction based on PKIX. The client has then the possibility to recover the public key associated with that sovereign key from the timeline servers to check the key validity, that the domain is the same that the one in the current transaction and that it signs the receive certificate.
 
 \subsection{CATA: Certificate Authority Transparency and Auditability}
 \label{certtrans}
@@ -240,6 +261,12 @@ org/files/CertificateAuthorityTransparencyandAuditability.pdf, 2011.
 \bibitem{dan08} Dancho Danchev. Hackers hijack dns records of high profile new zealand sites. http://m.zdnet.com/blog/security/hackers-hijack-dns-records-of-high-profile-new-zealand-sites/3185, 2008.
 
 \bibitem{utk11} Utkarsh. Domaining.com hacked. http://dotsutra.com/domain-names/industry-news/domaining-com-hacked/, 2011.
+
+\bibitem{wallace2010} Wallace, C. Trust Anchor Format. No. RFC 5914. 2010.
+
+\bibitem{eck2014} P. Eckersley, ''Sovereign key cryptography for internet domains'', online, 2012, https://git.eff.org/?p=sovereign-keys.git;a=blob\_plain;f=sovereign-key-design.txt;hb=master, last retrieved on December 21, 2014.
+
+\bibitem{wang2015domain} Wang, Xinli, Yan Bai, and Lihui Hu. "Domain based certification and revocation." Proceedings of the 2015 International Conference on Security and Management, SAM. Vol. 15. 2015.
 
 \end{thebibliography}
 
