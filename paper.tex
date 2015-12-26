@@ -71,10 +71,9 @@ The main concerns about authentification services provided by CAs are :
 	\item Are the validation procedures for the certified data that is included in a certificate solid enough? Because each CA has its own self-defined rules (Certification Practice Statement\footnote{CPS}), which can by completly different from one CA to another.
 \end{itemize}
 
-Going deeper with user validation : DN scheme based on X.500 Recomendation, but it is not completly defined, and will (in 1998) probably not be. Also, X509 certification depends on many others such as ISO, ANSI, ITU and IETF. Thus lead to a lack of harmonization.
-Plus, there is a big problem with CPS (Certification Practice Statements), that also can be seen such as flexibility (for pros), because each CA answer specific needs, so no harmonization again.
+There is a big problem with CPS (Certification Practice Statements), that can be seen such as flexibility (for pros), because each CA answer specific needs, so that is a sort of lack of harmonization.
 
-Also, regarrding to the law, CAs deny all leak of information from themselves.
+Also, regarding to the law, CAs deny all leak of information from themselves \cite{gerck1998overview}.
 
 Some kind of conclusion about harmonization (lack of), in a world wide vision, if space there is.
 
@@ -252,6 +251,20 @@ For the moment, there are plenty of questions to answer like :
 	\item What should happen if a certificate is no longer available (path unreachable)?
 \end{itemize}
 
+
+\section{Conclusion}
+\label{conclusion}
+
+Although the great need to replace the PKIX security model\footnote{X.509 and CAs}, none of those presented below may be valid, or well tested to be implemented in a large scale (world wide).
+
+Therefor, the best model may be the sovereign keys system associated with a DANE control of domain control certification, as soon as security problems will be fixed in DANE with DNSSEC.\\
+
+Otherwise, another point of view that need to be discussed, is the economic impact on such revolution: compagnies like VeriSign\footnote{www.verisign.com} or GeoTrust\footnote{www.geotrust.com} may face bankruptcy with the removal of all CAs. Knowing taht hey are big deciders in the internet activity, they detain a great lever on governements (because money leads capitalism), to stop or at least slow down the process of deployement of a new certification system.
+
+In general, to fit the Internet, experience has show us that we need to develop systems that are the most distributed as possible, like the internet paradigm.
+
+\pagebreak
+
 \nocite{*}
 
 \begin{thebibliography}{99}
@@ -287,6 +300,10 @@ org/files/CertificateAuthorityTransparencyandAuditability.pdf, 2011.
 \bibitem{eck2014} P. Eckersley, ''Sovereign key cryptography for internet domains'', online, 2012, https://git.eff.org/?p=sovereign-keys.git;a=blob\_plain;f=sovereign-key-design.txt;hb=master, last retrieved on December 21, 2014.
 
 \bibitem{wang2015domain} Wang, Xinli, Yan Bai, and Lihui Hu. "Domain based certification and revocation." Proceedings of the 2015 International Conference on Security and Management, SAM. Vol. 15. 2015.
+
+\bibitem{mf2011} Maury, Florian. "La fin annoncée des autorités de certification? Alternatives: TOFU, Convergence, CATA, Clés souveraines, DANE." Convergence 10 (2011): 509.
+
+\bibitem{correia2015dns} Correia, Miguel Medeiros, and Mustafa Tok. DNS-based Authentication of Named Entities (DANE). Technical report, Universidade do Porto, 2011–2012, 2015.
 
 \end{thebibliography}
 

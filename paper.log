@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.4)  26 DEC 2015 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.11.4)  26 DEC 2015 15:54
 entering extended mode
 **paper.tex
 (paper.tex
@@ -591,91 +591,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--66
 
 
  <./pki.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-) [2]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 162.
+)
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 161.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 1360) in paragraph at lines 160--163
+Underfull \hbox (badness 1360) in paragraph at lines 159--162
 \OT1/ptm/m/n/10 Thereby, []\OT1/pcr/m/n/10 www.example.org \OT1/ptm/m/n/10 woul
 d be able to se-cure
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--163
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
  []
 
-
-Underfull \hbox (badness 1383) in paragraph at lines 164--167
+[2]
+Underfull \hbox (badness 1383) in paragraph at lines 163--166
 \OT1/ptm/m/n/10 From the clas-sic schem, we have \OT1/ptm/m/it/10 Al-ice\OT1/pt
 m/m/n/10 , the sub-scriber
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 <danereq.png, id=20, 447.92343pt x 414.04688pt>
 File: danereq.png Graphic file (type png)
  <use danereq.png>
-Package pdftex.def Info: danereq.png used on input line 189.
+Package pdftex.def Info: danereq.png used on input line 188.
 (pdftex.def)             Requested size: 252.0pt x 232.93869pt.
  [3 <./danereq.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--261
+
+ []
+
+
+Underfull \vbox (badness 4072) has occurred while \output is active []
+
+ [4]
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
-Underfull \hbox (badness 6825) in paragraph at lines 267--268
+Underfull \hbox (badness 6825) in paragraph at lines 280--281
 []\OT1/ptm/m/n/8 St[]ephane Bortzmeyer. Com-ment fonc-tionne la faille kamin-sk
 y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--268
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 \OT1/ptm/m/n/8 ? http://www.bortzmeyer.org/comment-fonctionne-la-faille-
  []
 
 
-Underfull \hbox (badness 4660) in paragraph at lines 281--282
+Underfull \hbox (badness 4660) in paragraph at lines 294--295
 []\OT1/ptm/m/n/8 Dancho Danchev. Hack-ers hi-jack dns records of high pro-file
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 []\OT1/ptm/m/n/8 Utkarsh. Do-main-ing.com hacked. http://dotsutra.com/domain-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 []\OT1/ptm/m/n/8 P. Eck-er-s-ley, ''Sovereign key cryp-tog-ra-phy for in-ter-ne
 t
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 \OT1/ptm/m/n/8 do-mains'', on-line, 2012, https://git.eff.org/?p=sovereign-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 \OT1/ptm/m/n/8 keys.git;a=blob[]plain;f=sovereign-key-design.txt;hb=master, las
 t
  []
 
-[4] [5
+[5
 
 ] (paper.aux)
 
@@ -683,10 +692,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15637 strings out of 493636
- 291603 string characters out of 3143744
- 344393 words of memory out of 3000000
- 18759 multiletter control sequences out of 15000+200000
+ 15640 strings out of 493636
+ 291639 string characters out of 3143744
+ 343412 words of memory out of 3000000
+ 18762 multiletter control sequences out of 15000+200000
  41670 words of font info for 81 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  55i,8n,60p,604b,769s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -697,7 +706,7 @@ s/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/tim
 es/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (5 pages, 422652 bytes).
+Output written on paper.pdf (5 pages, 423742 bytes).
 PDF statistics:
  55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
