@@ -211,12 +211,32 @@ Therefor, DANE is on a good way, particulary for communications between servers,
 \subsection{Sovereign keys}
 \label{sovkeys}
 
-Sovereign keys are an Electric Frontier Foundation (EFF) proposition.
+Sovereign keys are an Electric Frontier Foundation (EFF\footnote{www.eff.org}) proposition.
 
 A sovereign key is a cryptographic pair of key where the public key is associated to a domain name (or a subdomain) to create a trust anchor\footnote{A trust anchor is an authoritative entity for which trust is assumed and not derived \cite{wallace2010}.} for itself.\\
 This association \textit{public key/domain name} is registered in a append-only data structure, kept on servers named ''\textit{timeline servers}''. There is a small number, around 10-20, of these \cite{eck2014}.\\
 The private part of the sovereign key (private key) allows to sign certificates of which the CN is the domain (or subdomain) name which it is associate with.\\
 During a handshake with a TLS server, the certificate is sent with its protected domain key signature, by the same mecanism than a TLS transaction based on PKIX. The client has then the possibility to recover the public key associated with that sovereign key from the timeline servers to check the key validity, that the domain is the same that the one in the current transaction and that it signs the receive certificate.
+
+A sovereign key has a cycle of life than begins with the generation of a cryptographic pair of keys	by the domain administrator (who wants to use TLS server on his domain). This administrtor must at first, proove that he really is controlling his domain before seeing it in public data-structures.\\
+To do so, he must give his certificate (which the CN covers his domain name declared protected by the sovereign key) signed by an AC recognized by the \textit{timeline servers}\footnote{The list of AC's recognized by the timeline servers is public and must be up to date, by conception.} or through DANE (once the norm will by published and implemented).\\
+During the public key registering by the timeline servers, proofs of control on the domain are examined and added to the sovereign key metadata. Other informations are added sch as:
+\begin{itemize}
+	\item Expiration date.
+	\item Names (and ports) of TLS services uses and protected by the sovereign key.
+	\item A list (that may be empty) of domain names which their sovereign keys are granted to revok (in case of loose of control of the private part of the sovereign key) the entry being entered.
+\end{itemize}
+A data-structure of sovereign keys being a append-only list, once the sovereign key is entered, it cannot be removed. The domain administrator can only modify informations by pushing informations in that data-structure. To remove a sovereign key (in the case of losing the private key), the domain adminstrator need to use a domain name with a sovereign key granted to modify its own sovereign key (thus present in the list of his own sovereign key, see in the item list below) or wait for his sovereign key expiration date. 
+
+This structure is useful because it protects from DNS or AC compromise of sovereign key by smurf attacks\footnote{Attacker able to give proof of domain control.}. It also need to be used with care, because an unadvise administrator may lose control of its own domain.\\
+
+The dark points of this systems are:
+\begin{itemize}
+	\item A service declared protected in a data-structure of a timeline server need to use a secure protocol (HTTPS instead of HTTP for example) to avoid downgrade attacks. It may be seen as an intrusion into the freedom of a service governance.
+	\item From loosing a private key may result a long term denial of service if no domain sovereign key is granted to modify the private key's sovereign key.
+	\item A compromized private key may lead to a total loose of control of the entire domain.
+	\item The use of ACs to certify the domain owner is the big problem of this system.
+\end{itemize}
 
 \subsection{CATA: Certificate Authority Transparency and Auditability}
 \label{certtrans}
