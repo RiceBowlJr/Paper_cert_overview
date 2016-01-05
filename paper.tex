@@ -24,13 +24,15 @@
 
 % Write abstract here
 \begin{abstract}
-This paper is a synthesis of a E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. First, it gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with thoughts on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
+The current document is a study of a paper written by E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. First, it gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with thoughts on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
 \end{abstract}
 
 % Each section begins with a \section{title} command
 \section{Overview of certification systems}
 
-First sections talk about existing (sections \ref{x509} and \ref{pgp}) or extinguished (section \ref{skip}) certification systems. Then, further sections (\ref{dane} and \ref{certtrans}) deals with new, not implemented yet, technologies of digital certification which may solve current issues. 
+X.509, CAs and PGP are the only technologies used to certify the authenticity of a user since the begining of the 90's. But those technologies appears to have issues, for example, Google ''became aware of unauthorized digital certificates for several Google domains.''\footnote{https://googleonlinesecurity.blogspot.fr/2013/12/further-improving-digital-certificate.html} This kind of threat led some researchers to find new certification systems.
+
+First sections shows existing (sections \ref{x509} and \ref{pgp}) or extinguished (section \ref{skip}) certification systems. Then, further sections (\ref{dane} and \ref{certtrans}) introduces new, not implemented yet, technologies of digital certification which may solve current issues. 
 
 
 \subsection{X.509 and CAs}
@@ -53,11 +55,21 @@ The way that certification system is the following:
 	\item The CA answer to the user to give him the precious informations about the subscriber's identity.
 \end{itemize}
 
-\begin{figure}[!hbt]
+Lets get an example: \textit{user1} want to prove his identity to \textit{user2} with a CA (Figure 1).\\
+First, user1 needs to get a certificate signed by the CA, so he requests it to the CA with some informations about himself. The CA makes the certificate and sign it, then he send it back to user1.\\
+Now user2 wants to communicate with user1, so to proove his identity, user1 gives to user2 his certificate (forged by the CA). User2, in order to verify user1's identity, ask to the CA if the certificate is valid. Then the CA examine this certificate and answer to user2, the answer can be:
+\begin{itemize}
+	\item Yes, it is valid
+	\item No, it is not valid
+	\item Not sure about its validity
+\end{itemize}
+With that information, user2 can choose to trust or not user1.
+
+\begin{figure}[!h]
 	\begin{center}
-	\includegraphics[width=\columnwidth]{pki.png}
-	\label{fig:pki}
-	\caption{Diagram of the X.509 and CAs process (from \cite{wang2015domain})}
+		\includegraphics[scale=0.45]{pki.png}
+		\caption{Diagram of the X.509 and CAs process (from \cite{wang2015domain})}
+		\label{fig:pki}
 	\end{center}
 \end{figure}
 
@@ -142,15 +154,18 @@ The big point is the use of such a tool in a world wide range: that is raisonnab
 
 SKIP implements a linked-chain of two-sided node authenticators, where each node derives its informations from a sort of \textit{directory service}.\\
 The problem is that SKIP happens at a low level, so it is transparent to the user; also assuming that the user has no control over security or other certification choices. So it has to be complemented by a second higher level protocol. Furthermore, SKIP does not support IP translation (such as NAT behind a firewall), that makes it quite useless.\\
-So that protocol imediatly looks unapropriate for our study. In other way, SKIP does not exist anymore, so it is pointless to go further in it study.
+So that protocol imediatly looks unapropriate for our study. In other way, SKIP does not exist anymore, so it is pointless to go further in its study.
 
 
 \subsection{Thoughts about X.509, CAs and PGP}
 \label{thoughts_old}
 
-To be used in a commercial way (for responsabilities purpose), X.509, CAs and PGP need a centralized certification control system. However, there is a struggle between this need of centralization and the internet architecture (that is decentralized). This show us the uselessness of centralized governement controls, since we have no central government on the internet which give a world governance.\\
-So the question emerging in there is: how can we (and do we need to) have a main control on an internet environement, to assure the goodness of datas and legitimacy of interlocutors?\\
-Some answers have been made since then (thus since the publication of the original article), answers that we are going to explain further.
+To be used in a commercial way, X.509, CAs and PGP need a centralized certification control system (a matter of responsibility).
+However, there is a struggle between this need of centralization and the decentralized internet architecture.
+It shows us the futility of certification authority for the whole world, since we have no centralized world governance or law.\\
+The main question is:\\
+\textit{How can we have a main control on an internet environement, to assure the security of the data and legitimacy of users/servers?}\\
+Some answers have been made since then (thus since the publication of the original article).
 
 
 \subsection{DANE (DNS-Based Authentication of Named Entities)}
@@ -185,7 +200,7 @@ With:
 
 \begin{figure}[!hbt]
 	\begin{center}
-	\includegraphics[width=\columnwidth]{danereq.png}
+	\includegraphics[scale=0.4]{danereq.png}
 	\label{fig:pki}
 	\caption{Process of certificate verification (from \cite{wang2015domain})}
 	\end{center}
@@ -229,7 +244,7 @@ A data-structure of sovereign keys being a append-only list, once the sovereign 
 
 This structure is useful because it protects from DNS or AC compromise of sovereign key by smurf attacks\footnote{Attacker able to give proof of domain control.}. It also need to be used with care, because an unadvise administrator may lose control of its own domain.\\
 
-The dark points of this systems are:
+The drawbacks of this systems are:
 \begin{itemize}
 	\item A service declared protected in a data-structure of a timeline server need to use a secure protocol (HTTPS instead of HTTP for example) to avoid downgrade attacks. It may be seen as an intrusion into the freedom of a service governance.
 	\item From loosing a private key may result a long term denial of service if no domain sovereign key is granted to modify the private key's sovereign key.
