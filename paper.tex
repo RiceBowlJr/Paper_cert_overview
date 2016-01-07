@@ -55,15 +55,15 @@ The way that certification system is the following:
 	\item The CA answer to the user to give him the precious informations about the subscriber's identity.
 \end{itemize}
 
-Lets get an example: \textit{user1} want to prove his identity to \textit{user2} with a CA (Figure 1).\\
-First, user1 needs to get a certificate signed by the CA, so he requests it to the CA with some informations about himself. The CA makes the certificate and sign it, then he send it back to user1.\\
-Now user2 wants to communicate with user1, so to proove his identity, user1 gives to user2 his certificate (forged by the CA). User2, in order to verify user1's identity, ask to the CA if the certificate is valid. Then the CA examine this certificate and answer to user2, the answer can be:
+Lets get an example: \textit{user1} want to prove his identity to \textit{Bob} with a CA (Alice) (Figure 1).\\
+First, Oscar needs to get a certificate signed by Alice, so he requests it to Alice with some informations about himself. Alice makes the certificate and signs it, then she sends it back to Oscar.\\
+Now Bob wants to communicate with Oscar, so to proove his identity, Oscar gives to Bob his certificate (forged by Alice). Bob, in order to verify Oscar's identity, ask to Alice if the certificate is valid. Then Alice examine this certificate and answer to Bob, the answer can be:
 \begin{itemize}
 	\item Yes, it is valid
 	\item No, it is not valid
 	\item Not sure about its validity
 \end{itemize}
-With that information, user2 can choose to trust or not user1.
+With that information, Bob can choose to trust or not Oscar.
 
 \begin{figure}[!h]
 	\begin{center}
