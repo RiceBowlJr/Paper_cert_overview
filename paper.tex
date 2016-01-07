@@ -55,9 +55,9 @@ The way that certification system is the following:
 	\item The CA answer to the user to give him the precious informations about the subscriber's identity.
 \end{itemize}
 
-Lets get an example: \textit{user1} want to prove his identity to \textit{Bob} with a CA (Alice) (Figure 1).\\
-First, Oscar needs to get a certificate signed by Alice, so he requests it to Alice with some informations about himself. Alice makes the certificate and signs it, then she sends it back to Oscar.\\
-Now Bob wants to communicate with Oscar, so to proove his identity, Oscar gives to Bob his certificate (forged by Alice). Bob, in order to verify Oscar's identity, ask to Alice if the certificate is valid. Then Alice examine this certificate and answer to Bob, the answer can be:
+Lets get an example: \textit{user1} want to prove his identity to \textit{Bob} with a CA (Jack) (Figure 1).\\
+First, Oscar needs to get a certificate signed by Jack, so he requests it to Jack with some informations about himself. Jack makes the certificate and signs it, then she sends it back to Oscar.\\
+Now Bob wants to communicate with Oscar, so to proove his identity, Oscar gives to Bob his certificate (forged by Jack). Bob, in order to verify Oscar's identity, ask to Jack if the certificate is valid. Then Jack examine this certificate and answer to Bob, the answer can be:
 \begin{itemize}
 	\item Yes, it is valid
 	\item No, it is not valid
@@ -96,6 +96,8 @@ PGP, created thanks to Phil Zimmermann researches. It has two parts: certificati
 Compared to X.509, PGP is more \textit{internet-like}, this because of its \textit{introducer-model} base.\\
 PGP depends on a chain of authentificators: the users themselves. This chain forms a ring, but not in a closed way but in a mathematical way like a list or a \textit{web-of-trust}. You may not know everyone in this ring, but you can assume that you will know somebody who know this user. You can also assume that different rings can have some contact points to garantee the referrals.
 
+Thus, we can figure out that PGP breaks the traditional hierarchical trust architecture with this \textit{web-of-trust} approach.\\
+
 \begin{figure}[!hbt]
 	\begin{center}
 		
@@ -121,14 +123,12 @@ PGP depends on a chain of authentificators: the users themselves. This chain for
 	\end{center}
 \end{figure}
 
-Thus, we can figure out that PGP breaks the traditional hierarchical trust architecture with this \textit{web-of-trust} approach.\\
-
-Let's get an example\footnote{Example from ''The PGP trust model''\cite{caronni2000}}: Bob want to exchange datas with Oscar, which he didn't knew before. But Jack, a colleague of Bob's, signs Oscar's public-key certificate whch he knows is authentic.\\
+Let's get an example\footnote{Example from ''The PGP trust model''\cite{caronni2000}} (Figure \ref{fig:web-of-trust}): Bob want to exchange datas with Oscar, which he didn't knew before. But Jack, a colleague of Bob's, signs Oscar's public-key certificate whch he knows is authentic.\\
 Oscar then forwards his signed certificate to Bob who wishes to communicate with Oscar privately.\\
 Bob, who knows and truts Jack as an \textit{introducer}, find out, after verification, that Jack is among Oscar's certificate signer. Therefor, Bob can be confident that Oscar's public key is authentic.
 
 However, had Bob not known or trusted Oscar's signers, including Jack, he would have been skeptical about the authenticity of Oscar's public-key. Oscar would have to find another introducer whom Bob trusts to sign Oscar's public-key certificate. This is illustrated in Figure \ref{fig:web-of-trust}.\\
-This is illustrated in Figure 1, where the dotted arrow indicates ''Bob trusts Jack as introducer'' and the solid arrow indicates ''Jack trusts Oscar’s public key validity''. 
+The dotted arrow indicates ''Bob trusts Jack as introducer'' and the solid arrow indicates ''Jack trusts Oscar’s public key validity''. 
 
 
 PGP also includes a public-key certificate and an introducer trustwhorthiness. They have different levels, for a public-key certificate they are:
