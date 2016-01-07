@@ -24,40 +24,40 @@
 
 % Write abstract here
 \begin{abstract}
-The current document is a study of a paper written by E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. First, it gives an overview of (the mains) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with thoughts on pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
+The current document is a study of a paper written by E.Gerck's paper : \textit{"Overview of Certification systems: X.509, CA, PGP and SKIP"}\cite{gerck1998overview}, but not only. First, it gives an overview of (the main) certification systems which are X.509 and CAs, PGP, SKIP, DANE and the Certificate transparency by Google, with thought on the pros and cons of each system, on a technical point of view and about the government's stranglehold on data exchanges.
 \end{abstract}
 
 % Each section begins with a \section{title} command
 \section{Overview of certification systems}
 
-X.509, CAs and PGP are the only technologies used to certify the authenticity of a user since the begining of the 90's. But those technologies appears to have issues, for example, Google ''became aware of unauthorized digital certificates for several Google domains.''\footnote{https://googleonlinesecurity.blogspot.fr/2013/12/further-improving-digital-certificate.html} This kind of threat led some researchers to find new certification systems.
+X.509, CAs and PGP are the only technologies used to certify the authenticity of a user since the beginning of the 90's. But those technologies appear to have issues, for example, Google ''became aware of unauthorized digital certificates for several Google domains.''\footnote{https://googleonlinesecurity.blogspot.fr/2013/12/further-improving-digital-certificate.html} This kind of threat led some researchers to find new certification systems.
 
-First sections shows existing (sections \ref{x509} and \ref{pgp}) or extinguished (section \ref{skip}) certification systems. Then, further sections (\ref{dane} and \ref{certtrans}) introduces new, not implemented yet, technologies of digital certification which may solve current issues. 
+First sections show existing (sections \ref{x509} and \ref{pgp}) or extinguished (section \ref{skip}) certification systems. Then, further sections (\ref{dane} and \ref{certtrans}) introduce new, not implemented yet, technologies of digital certification which may solve current issues. 
 
 
 \subsection{X.509 and CAs}
 \label{x509}
 
 X.509 and CAs\cite{rfc3647} infrastructure is based on a directory method.\\
-With this kind of certification system, there are three different entities, which are :
+With this kind of certification system, there are three different entities:
 
 \begin{enumerate}
-	\item \textbf{CA : Certification Authority}, an entity that controls authentication services and management of digital certificates. It can be public (like banks with their clients), commercial (such as \textit{Verisign} which sells its services) or private (like a compagny department, for an internal purposes).
-	\item \textbf{Subscriber :} the entity which sends informations to the CA to add it to his certificate. This entity is one that need to be trusted by the \textit{user} entity.
-	\item \textbf{User :} ask informations about \textit{subscribers} to CA(s), it's central to the process, since the user party is relying on the informations given by \textit{CAs} and is thus at risk.
+	\item \textbf{CA : Certification Authority}, an entity that controls authentication services and management of digital certificates. It can be public (like banks with their clients), commercial (such as \textit{Verisign} which sells its services) or private (like a company department, for an internal purposes).
+	\item \textbf{Subscriber :} the entity which sends data to the CA to add it to his certificate. This entity is one that needs to be trusted by the \textit{user} entity.
+	\item \textbf{User :} ask information about \textit{subscribers} to CA(s), it is central to the process, since the user party is relying on the informations given by \textit{CAs} and is thus at risk.
 \end{enumerate}
 
-The way that certification system is the following:
+The way that certification system works is the following:
 \begin{itemize}
 	\item A subscriber gives informations to the CA, in order to create a digital certificate for itself in the CA directory.
-	\item The CA receive those informations and put it in a certificate.
-	\item A user (the public in general) receive a certificate from a subscriber. In order to authenticate this subscriber, the client ask to the CA if the transmitted certificate matches with the subscriber's identity.
-	\item The CA answer to the user to give him the precious informations about the subscriber's identity.
+	\item The CA receives the information and puts it in a certificate.
+	\item A user (the public in general) receives a certificate from a subscriber. In order to authenticate this subscriber, the client asks to the CA if the transmitted certificate matches with the subscriber's identity.
+	\item The CA answers to the user to give him the precious informations about the subscriber's identity.
 \end{itemize}
 
-Lets get an example: \textit{user1} want to prove his identity to \textit{Bob} with a CA (Jack) (Figure 1).\\
-First, Oscar needs to get a certificate signed by Jack, so he requests it to Jack with some informations about himself. Jack makes the certificate and signs it, then she sends it back to Oscar.\\
-Now Bob wants to communicate with Oscar, so to proove his identity, Oscar gives to Bob his certificate (forged by Jack). Bob, in order to verify Oscar's identity, ask to Jack if the certificate is valid. Then Jack examine this certificate and answer to Bob, the answer can be:
+Let us get an example: \textit{user1} wants to prove his identity to \textit{Bob} with a CA (Jack) (Figure 1).\\
+First, Oscar needs to get a certificate signed by Jack, so he requests it from Jack with some informations about himself. Jack makes the certificate and signs it, then he sends it back to Oscar.\\
+Now Bob wants to communicate with Oscar, so to prove his identity, Oscar gives to Bob his certificate (forged by Jack). In order to verify Oscar's identity, Bob asks to Jack if the certificate is valid. Then Jack examines this certificate and answers to Bob, the answer can be:
 \begin{itemize}
 	\item Yes, it is valid
 	\item No, it is not valid
@@ -73,28 +73,28 @@ With that information, Bob can choose to trust or not Oscar.
 	\end{center}
 \end{figure}
 
-There is a not outwardly perceived entity in this system, it is the Naming Authority (DN). It provides to the CA a unique distinguished name (DN) which matches to the subscriber identity in the certificate.\\
+There is a not outwardly perceived entity in this system, it is the Naming Authority (DN). It provides to the CA a unique distinguished name (DN) which matches with the subscriber's identity in the certificate.\\
 Note that the CA can double in NA, but they provide two different services: the CA certificate refers to a name but does not denote it, the NA does.\\
 
 The main concerns about authentification services provided by CAs are :
 
 \begin{itemize}
-	\item The content of a certificate needs to be discussed, as well as certificate revocation. For example, a subscriber can generate multiple DN for a same CA or the same DN to multiple CAs, so maybe, a better subscriber identificator need to be added.
-	\item Are the validation procedures for the certified data that is included in a certificate solid enough? Because each CA has its own self-defined rules (Certification Practice Statement\footnote{CPS}), which can by completly different from one CA to another.
+	\item The content of a certificate needs to be discussed, as well as certificate revocation. For example, a subscriber can generate multiple DN for a same CA or the same DN to multiple CAs, so maybe, a better subscriber identificator needs to be added.
+	\item Are the validation procedures for the certified data that is included in a certificate solid enough? Because each CA has its own self-defined rules (Certification Practice Statement\footnote{CPS}), which can be completly different from one CA to another.
 \end{itemize}
 
-There is a big problem with CPS (Certification Practice Statements), that can be seen such as flexibility (for pros), because each CA answer specific needs, so that is a sort of lack of harmonization.
+There is a big problem with CPS (Certification Practice Statements), that can be noted such as flexibility (for pros), because each CA answer has specific needs, so that is a sort of lack of harmonization.
 
-Also, regarding to the law, CAs deny all leak of information from themselves \cite{gerck1998overview}.
+Also, regarding the law, CAs deny any leak of information from themselves \cite{gerck1998overview}.
 
 Some kind of conclusion about harmonization (lack of), in a world wide vision, if space there is.
 
 \subsection{PGP (Pretty Good Privacy)}
 \label{pgp}
 
-PGP, created thanks to Phil Zimmermann researches. It has two parts: certification and encryption, following text only deals with certification.\\
+PGP, created thanks to Phil Zimmermann research. It has two parts: certification and encryption, the following text only deals with certification.\\
 Compared to X.509, PGP is more \textit{internet-like}, this because of its \textit{introducer-model} base.\\
-PGP depends on a chain of authentificators: the users themselves. This chain forms a ring, but not in a closed way but in a mathematical way like a list or a \textit{web-of-trust}. You may not know everyone in this ring, but you can assume that you will know somebody who know this user. You can also assume that different rings can have some contact points to garantee the referrals.
+PGP depends on a chain of authenticators: the users themselves. This chain forms a ring, but not in a closed way but in a mathematical way like a list or a \textit{web-of-trust}. You may not knows everyone in this ring, but you can assume that you will know somebody who know this user. You can also assume that different rings can have some contact points to guarantee the referrals.
 
 Thus, we can figure out that PGP breaks the traditional hierarchical trust architecture with this \textit{web-of-trust} approach.\\
 
@@ -123,11 +123,11 @@ Thus, we can figure out that PGP breaks the traditional hierarchical trust archi
 	\end{center}
 \end{figure}
 
-Let's get an example\footnote{Example from ''The PGP trust model''\cite{caronni2000}} (Figure \ref{fig:web-of-trust}): Bob want to exchange datas with Oscar, which he didn't knew before. But Jack, a colleague of Bob's, signs Oscar's public-key certificate whch he knows is authentic.\\
+Let us get an example\footnote{Example from ''The PGP trust model''\cite{caronni2000}} (Figure \ref{fig:web-of-trust}): Bob wants to exchange data with Oscar, whom he didn't know before. But Jack, a colleague of Bob's, signs Oscar's public-key certificate which he knows is authentic.\\
 Oscar then forwards his signed certificate to Bob who wishes to communicate with Oscar privately.\\
-Bob, who knows and truts Jack as an \textit{introducer}, find out, after verification, that Jack is among Oscar's certificate signer. Therefor, Bob can be confident that Oscar's public key is authentic.
+Bob, who knows and trusts Jack as an \textit{introducer}, finds out, after verification, that Jack is among Oscar's certificate signer. Therefore, Bob can be confident that Oscar's public key is authentic.
 
-However, had Bob not known or trusted Oscar's signers, including Jack, he would have been skeptical about the authenticity of Oscar's public-key. Oscar would have to find another introducer whom Bob trusts to sign Oscar's public-key certificate. This is illustrated in Figure \ref{fig:web-of-trust}.\\
+However, had Bob not known or trusted Oscar's signers, including Jack, he would have been skeptical about the authenticity of Oscar's public-key. Oscar would then have to find another introducer whom Bob trusts to sign Oscar's public-key certificate. This is illustrated in Figure \ref{fig:web-of-trust}.\\
 The dotted arrow indicates ''Bob trusts Jack as introducer'' and the solid arrow indicates ''Jack trusts Oscar’s public key validity''. 
 
 
@@ -144,9 +144,9 @@ For an introducer, those levels of trustworthiness are the following:
 	\item \textit{Untrustworthy:} this public-key should not be trustedto introduce another, therefore any occurence of this key as a signature on another public-key should be ignored.
 \end{itemize}
 
-Only the trustworthiness of public-key's validity is automatically evaluated by PGP. Introducer's worthiness is manually assigned by each user of to the public key, and exists only within each individual user's public-key ring\footnote{PGP allows users to have files representing multipke \textit{key rings} to store public or secret keys\cite{caronni2000}.}.
+Only the trustworthiness of public-key's validity is automatically evaluated by PGP. The introducer's worthiness is manually assigned by each user of to the public key, and exists only within each individual user's public-key ring\footnote{PGP allows users to have files representing multipke \textit{key rings} to store public or secret keys\cite{caronni2000}.}.
 
-The big point is the use of such a tool in a world wide range: that is raisonnably not possible. We can assume to use it in a little group, where trustworthiness is effective, but in a more wide area, it is problematic to trust such a amount of people, or find trusted introducers. Furthermore, in a commercial use, there is no entity responsible when something goes wrong.
+The big point is the use of such a tool in a world wide range: that is reasonably not possible. We can assume it can be used in a little group, where trustworthiness is effective, but in a wider area, it is problematic to trust such a number of people, or find trusted introducers. Furthermore, in a commercial use, there is no entity responsible when something goes wrong.
 
 
 \subsection{SKIP (Simple Key-Management for Internet Protocol)}
@@ -154,7 +154,7 @@ The big point is the use of such a tool in a world wide range: that is raisonnab
 
 SKIP implements a linked-chain of two-sided node authenticators, where each node derives its informations from a sort of \textit{directory service}.\\
 The problem is that SKIP happens at a low level, so it is transparent to the user; also assuming that the user has no control over security or other certification choices. So it has to be complemented by a second higher level protocol. Furthermore, SKIP does not support IP translation (such as NAT behind a firewall), that makes it quite useless.\\
-So that protocol imediatly looks unapropriate for our study. In other way, SKIP does not exist anymore, so it is pointless to go further in its study.
+So that protocol imediatly looks inappropriate for our study. In an other way, SKIP does not exist anymore, so it is pointless to go further in its study.
 
 
 \subsection{Thoughts about X.509, CAs and PGP}
@@ -164,23 +164,23 @@ To be used in a commercial way, X.509, CAs and PGP need a centralized certificat
 However, there is a struggle between this need of centralization and the decentralized internet architecture.
 It shows us the futility of certification authority for the whole world, since we have no centralized world governance or law.\\
 The main question is:\\
-\textit{How can we have a main control on an internet environement, to assure the security of the data and legitimacy of users/servers?}\\
-Some answers have been made since then (thus since the publication of the original article).
+\textit{How can we have a main control over an internet environment, to assure the security of the data and legitimacy of users/servers?}\\
+Some answers have been provided since then (thus since the publication of the original article).
 
 
 \subsection{DANE (DNS-Based Authentication of Named Entities)}
 \label{dane}
 
-DANE is not implemented yet, but a IETF team is working on the standard.\\
-It has begin with a simple assert: why use a new trust infrastructure if we already have to use DNS to resolve a domain name?\\
-From here, DNS must be securised, knowing that it is easily to set a MITM with DNS cache poisoning \cite{aa04} using the Kaminsky attack \cite{bor08}. That is the main purpose of DNSSEC: secure DNS. DANE allow to store keys in DNS. Thereby, \verb$www.example.org$ would be able to secure \verb$https://www.example.org$ without using a suspicious third part, just by putting its keys in the domain name that it controls. By its arborescent nature, \verb$example.org$ shall not be able to cheat on \verb$example.com$.\\
+DANE is not implemented yet, but an IETF team is working on the standard.\\
+It has begun with a simple assertion: why use a new trust infrastructure if we already have to use DNS to resolve a domain name?\\
+From here, DNS must be securised, knowing that it is easily to set a MITM with DNS cache poisoning \cite{aa04} using the Kaminsky attack \cite{bor08}. That is the main purpose of DNSSEC: secure DNS. DANE allows to store keys in DNS. Thereby, \verb$www.example.org$ would be able to secure \verb$https://www.example.org$ without using a suspicious third part, just by putting its keys in the domain name that it controls. By its arborescent nature, \verb$example.org$ shall not be able to cheat on \verb$example.com$.\\
 
 Lets give us an example:\\
 From the classic schem, we have \textit{Alice}, the subscriber (\verb$alice.example.com$), \textit{Bob} its client, and \textit{Charlie}, the serious AC. There are three different scenarios:
 \begin{itemize}
-	\item \textit{Type 0:} Alice has got a certificate delivered by Charlie and is really satisfied by it. But Alice is afraid that \textit{Oscar} (a bad AC) forge a false certificate for its website. So Alice uses DANE to tell in DNS that Charlie and only Charlie is its AC.
-	\item \textit{Type 1:} Alice has got a certificate delivered by Charlie, but fear that Charlie give its certificate to bad people. So Alice uses DANE to publish in DNS the origin of its certificate.
-	\item \textit{Type 2:} that is the \textit{max scenario} in DANE. Alice doesn't trust ACs anymore, so it decides to emite it via DANE on DNS, that gives the entire responsability on DNS servers. 
+	\item \textit{Type 0:} Alice has got a certificate delivered by Charlie and is really satisfied by it. But Alice is afraid that \textit{Oscar} (a bad AC) might forge a false certificate for his website. So Alice uses DANE to tell in DNS that Charlie and only Charlie is its AC.
+	\item \textit{Type 1:} Alice has got a certificate delivered by Charlie, but fears that Charlie might give its certificate to bad people. So Alice uses DANE to publish in DNS the origin of its certificate.
+	\item \textit{Type 2:} that is the \textit{max scenario} in DANE. Alice doesn't trust ACs anymore, so it decides to emit it via DANE on DNS, that gives the entire responsibility on DNS servers. 
 \end{itemize}
 
 This type is in a new register called TLSA\footnote{TLSA doesn't stand for anything: it is just the name of the RRtype (Record Resource type).} in DNS. Her is an example of a TLSA register:\\
@@ -206,63 +206,63 @@ With:
 	\end{center}
 \end{figure}
 
-As we said before, DNS is not secured, so DNSEC has been deployed. DNSSEC is a protocol that allow to the DNS server (master) ti encrypt and sign its answer with a public key cryptographic system. It also permit to return a \verb$NXDOMAIN$ type (''No Such Domain'').\\
+As we said before, DNS is not secured, so DNSEC has been deployed. DNSSEC is a protocol that allows to the DNS server (master) to encrypt and sign its answer with a public key cryptographic system. It also permits to return a \verb$NXDOMAIN$ type (''No Such Domain'').\\
 Nervertheless DNSSEC has some vulnaribilities such as:
 \begin{itemize}
 	\item Replay attacks
-	\item Attacks against intermediaries: because of the hierarchic and centralized approch of DNS (there is only one root), the responsability of intermediaries is really high and a remote control by a thief should be bad (the thief controls the domain thus). History has proved that some of those intermediaries are not that trustworthy \cite{dan08} \cite{utk11}.
+	\item Attacks against intermediaries: because of the hierarchic and centralized approach of DNS (there is only one root), the responsibility of intermediaries is really high and a remote control by a thief should be damaging (the thief controls the domain thus). History has proved that some of those intermediaries are not that trustworthy \cite{dan08} \cite{utk11}.
 \end{itemize}
 
 To make a conclusion about DANE, we have multiple points to point out:
 \begin{itemize}
 	\item Introducing a new register TLSA shall be very complicated, knowing that things are not moving that fast in DNS\footnote{Like it use to be with EDNS introduction few years ago.}.
-	\item The validation necessity end to end is quite disturbing knowing that there is no standart and deployable solution for wide use  about the last kilometer securisation.
-	\item DNSSEC is not possible behind a DNS proxy (which filter/break DNS answers to the point of creating a DoS for all TLS services.
+	\item The end to end validation necessity end to end is quite disturbing knowing that there is no standard and deployable solution for wide use  about the last kilometer securisation.
+	\item DNSSEC is not possible behind a DNS proxy (which filters/breaks DNS answers to the point of creating a DoS for all TLS services.
 \end{itemize}
 
-Therefor, DANE is on a good way, particulary for communications between servers, where there is no (not much) constraints of security are (more) easily achievable. 
+Therefore, DANE is on a good way, particularly for communications between servers, where there is no (not many) constraints of security are (more) easily achievable. 
 
 \subsection{Sovereign keys}
 \label{sovkeys}
 
 Sovereign keys are an Electric Frontier Foundation (EFF\footnote{www.eff.org}) proposition.
 
-A sovereign key is a cryptographic pair of key where the public key is associated to a domain name (or a subdomain) to create a trust anchor\footnote{A trust anchor is an authoritative entity for which trust is assumed and not derived \cite{wallace2010}.} for itself.\\
+A sovereign key is a cryptographic pair of keys where the public key is associated to a domain name (or a subdomain) to create a trust anchor\footnote{A trust anchor is an authoritative entity for which trust is assumed and not derived \cite{wallace2010}.} for itself.\\
 This association \textit{public key/domain name} is registered in a append-only data structure, kept on servers named ''\textit{timeline servers}''. There is a small number, around 10-20, of these \cite{eck2014}.\\
-The private part of the sovereign key (private key) allows to sign certificates of which the CN is the domain (or subdomain) name which it is associate with.\\
-During a handshake with a TLS server, the certificate is sent with its protected domain key signature, by the same mecanism than a TLS transaction based on PKIX. The client has then the possibility to recover the public key associated with that sovereign key from the timeline servers to check the key validity, that the domain is the same that the one in the current transaction and that it signs the receive certificate.
+The private part of the sovereign key (private key) allows to sign certificates of which the CN is the domain (or subdomain) name which it is associated to.\\
+During a handshake with a TLS server, the certificate is sent with its protected domain key signature, by the same mechanism than as a TLS transaction based on PKIX. The client has then the possibility to recover the public key associated with that sovereign key from the timeline servers to check the key's validity, that the domain is the same as the one in the current transaction and that it signs the receive certificate.
 
-A sovereign key has a cycle of life than begins with the generation of a cryptographic pair of keys	by the domain administrator (who wants to use TLS server on his domain). This administrtor must at first, proove that he really is controlling his domain before seeing it in public data-structures.\\
-To do so, he must give his certificate (which the CN covers his domain name declared protected by the sovereign key) signed by an AC recognized by the \textit{timeline servers}\footnote{The list of AC's recognized by the timeline servers is public and must be up to date, by conception.} or through DANE (once the norm will by published and implemented).\\
-During the public key registering by the timeline servers, proofs of control on the domain are examined and added to the sovereign key metadata. Other informations are added sch as:
+A sovereign key has a cycle of life that begins with the generation of a cryptographic pair of keys	by the domain administrator (who wants to use TLS server on his domain). This administrator must at first, prove that he really is controlling his domain before seeing it in public data-structures.\\
+To do so, he must give his certificate (of which the CN covers his domain name declared protected by the sovereign key) signed by an AC recognized by the \textit{timeline servers}\footnote{The list of AC's recognized by the timeline servers is public and must be up to date, by conception.} or through DANE (once the standard has been published and implemented).\\
+During the public key registering by the timeline servers, proofs of control on the domain are examined and added to the sovereign key metadata. Other data are added such as:
 \begin{itemize}
 	\item Expiration date.
 	\item Names (and ports) of TLS services uses and protected by the sovereign key.
-	\item A list (that may be empty) of domain names which their sovereign keys are granted to revok (in case of loose of control of the private part of the sovereign key) the entry being entered.
+	\item A list (that may be empty) of domain names whose sovereign keys are granted to revoke (in case of loss of control of the private part of the sovereign key) the entry being entered.
 \end{itemize}
-A data-structure of sovereign keys being a append-only list, once the sovereign key is entered, it cannot be removed. The domain administrator can only modify informations by pushing informations in that data-structure. To remove a sovereign key (in the case of losing the private key), the domain adminstrator need to use a domain name with a sovereign key granted to modify its own sovereign key (thus present in the list of his own sovereign key, see in the item list below) or wait for his sovereign key expiration date. 
+A data-structure of sovereign keys being a append-only list, once the sovereign key is entered, it cannot be removed. The domain administrator can only modify informations by pushing data in that data-structure. To remove a sovereign key (in the case the private key has been lost), the domain adminstrator needs to use a domain name with a sovereign key granted to modify its own sovereign key (thus present in the list of his own sovereign keys, see in the item list below) or wait for his sovereign key's expiration date. 
 
-This structure is useful because it protects from DNS or AC compromise of sovereign key by smurf attacks\footnote{Attacker able to give proof of domain control.}. It also need to be used with care, because an unadvise administrator may lose control of its own domain.\\
+This structure is useful because it protects from DNS or AC compromise of sovereign key by smurf attacks\footnote{Attacker able to give proof of domain control.}. It also needs to be used with care, because an unadvised administrator may lose control of its own domain.\\
 
 The drawbacks of this systems are:
 \begin{itemize}
-	\item A service declared protected in a data-structure of a timeline server need to use a secure protocol (HTTPS instead of HTTP for example) to avoid downgrade attacks. It may be seen as an intrusion into the freedom of a service governance.
-	\item From loosing a private key may result a long term denial of service if no domain sovereign key is granted to modify the private key's sovereign key.
-	\item A compromized private key may lead to a total loose of control of the entire domain.
-	\item The use of ACs to certify the domain owner is the big problem of this system.
+	\item A service declared protected in a data-structure of a timeline server needs to use a secure protocol (HTTPS instead of HTTP for example) to avoid downgrade attacks. It may be seen as an intrusion into the freedom of a service governance.
+	\item Loosing a private key may result in a long term denial of service if no domain sovereign key is granted to modify the private key's sovereign key.
+	\item A compromized private key may lead to a total loss of control of the entire domain.
+	\item The use of ACs to certify the domain owner is the big flaw of this system.
 \end{itemize}
 
 \subsection{CATA: Certificate Authority Transparency and Auditability}
 \label{certtrans}
 
-This protocol has been developped by a Google team few years ago \cite{LL11}. It is still in developpment \cite{certtransp2013} so it is not implemented and deployed yet. It also has to be improve, like everythign in computing sciences, in the early years.\\
-CATA's purpose is a public list of all certificates that are emitted by CAs. Thus, clients are allowed to search in that public list, and verify that the received certificate is in that list, to be validate (if it is not in the list, it shall be rejected).\\
+This protocol has been developed by a Google team a few years ago \cite{LL11}. It is still under development \cite{certtransp2013} so it is not implemented and deployed yet. It also has to be improve, like everything in computing science, in the early years.\\
+CATA's purpose is a public list of all certificates that are emitted by CAs. Thus, clients are allowed to search in that public list, and verify that the received certificate is in that list, to be validated (if it is not in the list, it shall be rejected).\\
 In that way, a(conscientious) domain administrator can have access to that list and monitor all fraudulent certificates for his domain.\\
 For the moment, there are plenty of questions to answer like :
 \begin{itemize}
 	\item Who should hold those lists?
 	\item How many lists should be created?
-	\item How does the revokation should work?
+	\item How should the revokation work?
 	\item What should happen if a certificate is no longer available (path unreachable)?
 \end{itemize}
 
@@ -270,13 +270,13 @@ For the moment, there are plenty of questions to answer like :
 \section{Conclusion}
 \label{conclusion}
 
-Although the great need to replace the PKIX security model\footnote{X.509 and CAs}, none of those presented below may be valid, or well tested to be implemented in a large scale (world wide).
+Despite the great need to replace the PKIX security model\footnote{X.509 and CAs}, none of those presented above may be valid, or well tested to be implemented on a large scale (world wide).
 
-Therefor, the best model may be the sovereign keys system associated with a DANE control of domain control certification, as soon as security problems will be fixed in DANE with DNSSEC.\\
+Therefore, the best model may be the sovereign keys system associated with the DANE control of a domain control certification, as soon as security problems are fixed in DANE with DNSSEC.\\
 
-Otherwise, another point of view that need to be discussed, is the economic impact on such revolution: compagnies like VeriSign\footnote{www.verisign.com} or GeoTrust\footnote{www.geotrust.com} may face bankruptcy with the removal of all CAs. Knowing taht hey are big deciders in the internet activity, they detain a great lever on governements (because money leads capitalism), to stop or at least slow down the process of deployement of a new certification system.
+Otherwise, another point of view that needs to be discussed, is the economic impact of such a revolution: companies like VeriSign\footnote{www.verisign.com} or GeoTrust\footnote{www.geotrust.com} may face bankruptcy with the removal of all CAs. Knowing that they are big deciders in the internet activity, they detain a great lever on governments (because money leads capitalism), to stop or at least slow down the deployment process of a new certification system.
 
-In general, to fit the Internet, experience has show us that we need to develop systems that are the most distributed as possible, like the internet paradigm.
+In general, to fit the Internet, experience has shown that we need to develop systems that are the most distributed possible, like the internet paradigm.
 
 \pagebreak
 
